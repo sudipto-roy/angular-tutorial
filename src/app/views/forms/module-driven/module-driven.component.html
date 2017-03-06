@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <p class="text-center">View and Behaviour of Module Driven From </p>
+  </div>
+  <div class="panel-body">
+
+    <form class="form-horizontal" [formGroup]="moduleDrivenForm" (ngSubmit)="consoleUser()">
+
+      <div [class]="username.pristine ? 'row form-group' : username.valid ? 'row form-group has-success' : 'row form-group has-error'"> 
+        <label class="col-xs-2 control-label" for="username">Username</label>
+        <div class="col-xs-5">
+          <input class="form-control" type="text" name="username" id="username" [formControl]="username">
+        </div>
+        <div *ngIf="username.invalid && username.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
+          <em class="glyphicon glyphicon-info-sign"></em> username is required
+        </div>
+        <div *ngIf="username.valid" class="alert alert-sm alert-success alert-xs col-xs-1 text-center">
+          <em class="glyphicon glyphicon-ok"></em>
+        </div>
+      </div>
+
+      <div [class]="password.pristine ? 'row form-group' : password.valid ? 'row form-group has-success' : 'row form-group has-error'">
+        <label class="col-xs-2 control-label" for="password">Password</label>
+        <div class="col-xs-5">
+          <input class="form-control" type="password" name="password" id="password" [formControl]="password">
+        </div>
+        <div *ngIf="password.invalid && password.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
+          <em class="glyphicon glyphicon-info-sign"></em>
+          <span *ngIf="password.hasError('required')"> password is required</span>
+          <span *ngIf="password.hasError('minlength')"> minimum 4 characters</span>
+        </div>
+        <div *ngIf="password.valid" class="alert alert-sm alert-success alert-xs col-xs-1 text-center">
+          <em class="glyphicon glyphicon-ok"></em>
+        </div>
+      </div>
+
+      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!moduleDrivenForm.valid">Log In</button>
+    </form>
+  </div>
+</div>
