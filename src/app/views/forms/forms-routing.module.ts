@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
-import { ModuleDrivenComponent } from './module-driven/module-driven.component';
+import { ModelDrivenComponent } from './model-driven/model-driven.component';
+import { CustomValidationComponent } from './custom-validation/custom-validation.component';
 
 const routes: Routes = [{
   path: '',
@@ -16,8 +17,11 @@ const routes: Routes = [{
     path: 'template-driven',
     component: TemplateDrivenComponent
   }, {
-    path: 'module-driven',
-    component: ModuleDrivenComponent
+    path: 'model-driven',
+    component: ModelDrivenComponent
+  }, {
+    path: 'custom-validation',
+    component: CustomValidationComponent
   }]
 }];
 

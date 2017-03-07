@@ -11,8 +11,11 @@ export class HomeComponent implements OnInit {
     name: 'Template Driven Forms',
     path: 'template-driven'
   }, {
-    name: 'Module Driven Forms',
-    path: 'module-driven'
+    name: 'Model Driven Forms',
+    path: 'model-driven'
+  }, {
+    name: 'Custom Validation',
+    path: 'custom-validation'
   }];
   constructor() { }
 

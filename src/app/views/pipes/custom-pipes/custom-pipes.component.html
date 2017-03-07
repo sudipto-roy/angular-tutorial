@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <p class="text-center">Custom Pipes (transform)</p>
+  </div>
+  <div class="panel-body">
+    {{ title | transform: 'lower' }}<br>
+    {{ title | transform: 'upper' }}<br>
+    {{ title | transform: 'camelcase' }}    
+  </div>
+</div>
+
+<!--<div class="panel panel-default">
+  <div class="panel-heading">
+    <p class="text-center">custom-pipes.component.html (transform)</p>
+  </div>
+  <div class="panel-body">
+    <textarea class="code" rows="4" wrap="off" readonly>
+    { { title | transform: 'lower' } }
+    { { title | transform: 'upper' } }
+    { { title | transform: 'camelcase' } }
+    </textarea>
+  </div>
+</div>-->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <p class="text-center">Custom Pipes (sort)</p>
+  </div>
+  <div class="panel-body">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th (click)="property='id'" (click)="ascending=!ascending">ID <em class="glyphicon glyphicon-sort"></em></th>
+          <th (click)="property='first_name'" (click)="ascending=!ascending">First Name <em class="glyphicon glyphicon-sort"></em></th>
+          <th (click)="property='last_name'" (click)="ascending=!ascending">Last Name <em class="glyphicon glyphicon-sort"></em></th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let name of names | sort : property : ascending">
+          <td>{{name.id}}</td>
+          <td>{{name.first_name}}</td>
+          <td>{{name.last_name}}</td>          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-module-driven',
-  templateUrl: './module-driven.component.html',
-  styleUrls: ['./module-driven.component.scss']
+  selector: 'app-model-driven',
+  templateUrl: './model-driven.component.html',
+  styleUrls: ['./model-driven.component.scss']
 })
-export class ModuleDrivenComponent implements OnInit {
+export class ModelDrivenComponent implements OnInit {
   username = new FormControl('', [Validators.required]);
   
   password = new FormControl('', [
@@ -14,7 +14,7 @@ export class ModuleDrivenComponent implements OnInit {
     Validators.minLength(4)
   ]);
 
-  moduleDrivenForm: FormGroup = this.builder.group({
+  modelDrivenForm: FormGroup = this.builder.group({
     username: this.username,
     password: this.password
   });
@@ -22,7 +22,7 @@ export class ModuleDrivenComponent implements OnInit {
   constructor(private builder: FormBuilder) { }
 
   consoleUser () {
-    console.log(this.moduleDrivenForm.value);
+    console.log(this.modelDrivenForm.value);
   }
 
   ngOnInit() {

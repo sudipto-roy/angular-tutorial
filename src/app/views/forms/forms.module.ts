@@ -8,7 +8,8 @@ import { FormsRoutingModule } from './forms-routing.module';
 
 import { HomeComponent } from './home/home.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
-import { ModuleDrivenComponent } from './module-driven/module-driven.component';
+import { ModelDrivenComponent } from './model-driven/model-driven.component';
+import { CustomValidationComponent } from './custom-validation/custom-validation.component';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import { ModuleDrivenComponent } from './module-driven/module-driven.component';
     ReactiveFormsModule,
     FormsRoutingModule
   ],
-  declarations: [HomeComponent, TemplateDrivenComponent, ModuleDrivenComponent]
+  declarations: [HomeComponent, TemplateDrivenComponent, ModelDrivenComponent, CustomValidationComponent]
 })
 export class FormsModule { }

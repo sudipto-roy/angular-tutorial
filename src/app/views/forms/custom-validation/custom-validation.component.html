@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <p class="text-center">Custom Validation with Model Driven From </p>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" [formGroup]="customValidationForm" (ngSubmit)="consoleUser()">
+
+      <div [class]="email.pristine ? 'row form-group' : email.valid ? 'row form-group has-success' : 'row form-group has-error'">
+        <label class="col-xs-2 control-label" for="email">Email</label>
+        <div class="col-xs-5">
+          <input class="form-control" type="text" name="email" id="email" [formControl]="email">
+        </div>
+        <div *ngIf="email.invalid && email.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
+          <em class="glyphicon glyphicon-info-sign"></em> 
+          <span *ngIf="email.hasError('required')">email is required</span>
+          <span *ngIf="email.value && email.hasError('needsEmail')">not a valid email</span>
+        </div>
+        <div *ngIf="email.valid" class="alert alert-sm alert-success alert-xs col-xs-1 text-center">
+          <em class="glyphicon glyphicon-ok"></em>
+        </div>
+      </div>
+
+      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!customValidationForm.valid">Log In</button>
+    </form>
+  </div>
+</div>

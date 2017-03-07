@@ -1,13 +1,15 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <p class="text-center">View and Behaviour of Template Driven From </p>
+    <p class="text-center">View and Behaviour of Model Driven From </p>
   </div>
   <div class="panel-body">
-    <form class="form-horizontal" #templateDrivenForm="ngForm" (ngSubmit)="consoleDetails($event, templateDrivenForm)">
+
+    <form class="form-horizontal" [formGroup]="modelDrivenForm" (ngSubmit)="consoleUser()">
+
       <div [class]="username.pristine ? 'row form-group' : username.valid ? 'row form-group has-success' : 'row form-group has-error'">
         <label class="col-xs-2 control-label" for="username">Username</label>
         <div class="col-xs-5">
-          <input class="form-control" type="text" name="userName" id="userName" ngModel #username="ngModel" required>
+          <input class="form-control" type="text" name="username" id="username" [formControl]="username">
         </div>
         <div *ngIf="username.invalid && username.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
           <em class="glyphicon glyphicon-info-sign"></em> username is required
@@ -16,10 +18,11 @@
           <em class="glyphicon glyphicon-ok"></em>
         </div>
       </div>
+
       <div [class]="password.pristine ? 'row form-group' : password.valid ? 'row form-group has-success' : 'row form-group has-error'">
         <label class="col-xs-2 control-label" for="password">Password</label>
         <div class="col-xs-5">
-          <input class="form-control" type="password" name="password" id="password" ngModel #password="ngModel" minlength="4" required>
+          <input class="form-control" type="password" name="password" id="password" [formControl]="password">
         </div>
         <div *ngIf="password.invalid && password.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
           <em class="glyphicon glyphicon-info-sign"></em>
@@ -30,7 +33,8 @@
           <em class="glyphicon glyphicon-ok"></em>
         </div>
       </div>
-      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!templateDrivenForm.valid">Sign Up</button>
+
+      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!modelDrivenForm.valid">Log In</button>
     </form>
   </div>
 </div>
@@ -50,13 +54,14 @@
 
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="template">
-          <h3 class="h3-sm">Template-Driven Form Template (template-driven.component.html)</h3>
-          <textarea class="code" rows="30" wrap="off" readonly>
-    <form class="form-horizontal" #templateDrivenForm="ngForm" (ngSubmit)="consoleDetails($event, templateDrivenForm)">
+          <h3 class="h3-sm">Model-Driven Form Template (model-driven.component.html)</h3>
+          <textarea class="code" rows="34" wrap="off" readonly>
+    <form class="form-horizontal" [formGroup]="modelDrivenForm" (ngSubmit)="consoleUser()">
+
       <div [class]="username.pristine ? 'row form-group' : username.valid ? 'row form-group has-success' : 'row form-group has-error'">
         <label class="col-xs-2 control-label" for="username">Username</label>
         <div class="col-xs-5">
-          <input class="form-control" type="text" name="userName" id="userName" ngModel #username="ngModel" required>
+          <input class="form-control" type="text" name="username" id="username" [formControl]="username">
         </div>
         <div *ngIf="username.invalid && username.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
           <em class="glyphicon glyphicon-info-sign"></em> username is required
@@ -65,10 +70,11 @@
           <em class="glyphicon glyphicon-ok"></em>
         </div>
       </div>
+
       <div [class]="password.pristine ? 'row form-group' : password.valid ? 'row form-group has-success' : 'row form-group has-error'">
         <label class="col-xs-2 control-label" for="password">Password</label>
         <div class="col-xs-5">
-          <input class="form-control" type="password" name="password" id="password" ngModel #password="ngModel" minlength="4" required>
+          <input class="form-control" type="password" name="password" id="password" [formControl]="password">
         </div>
         <div *ngIf="password.invalid && password.dirty" class="alert alert-sm alert-danger col-xs-4 text-center">
           <em class="glyphicon glyphicon-info-sign"></em>
@@ -79,32 +85,43 @@
           <em class="glyphicon glyphicon-ok"></em>
         </div>
       </div>
-      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!templateDrivenForm.valid">Sign Up</button>
+
+      <button class="btn btn-info col-xs-offset-2" type="submit" [disabled]="!modelDrivenForm.valid">Log In</button>
     </form>
           </textarea>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="component">
-          <h3 class="h3-sm">Template-Driven Form Component (template-driven.component.ts)</h3>
-          <textarea class="code" rows="22" wrap="off" readonly>
+          <h3 class="h3-sm">Model-Driven Form Component (model-driven.component.ts)</h3>
+          <textarea class="code" rows="32" wrap="off" readonly>
       import { Component, OnInit } from '@angular/core';
-      import { NgForm } from '@angular/forms';
+      import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
       @Component({
-        selector: 'app-template-driven',
-        templateUrl: './template-driven.component.html',
-        styleUrls: ['./template-driven.component.scss']
+        selector: 'app-model-driven',
+        templateUrl: './model-driven.component.html',
+        styleUrls: ['./model-driven.component.scss']
       })
-      export class TemplateDrivenComponent implements OnInit {
+      export class ModelDrivenComponent implements OnInit {
+        username = new FormControl('', [Validators.required]);
+        
+        password = new FormControl('', [
+          Validators.required,
+          Validators.minLength(4)
+        ]);
 
-        constructor() { }
+        modelDrivenForm: FormGroup = this.builder.group({
+          username: this.username,
+          password: this.password
+        });
 
-        ngOnInit() {
+        constructor(private builder: FormBuilder) { }
+
+        consoleUser () {
+          console.log(this.modelDrivenForm.value);
         }
 
-        consoleDetails(e, form: NgForm) {
-          e.preventDefault();
-          console.log(form.value);
+        ngOnInit() {
         }
 
       }
@@ -115,6 +132,7 @@
           <textarea class="code" rows="25" wrap="off" readonly>
     import { NgModule } from '@angular/core';
     import { CommonModule } from '@angular/common';
+    import { ReactiveFormsModule } from '@angular/forms';
 
     import { SharedModule } from '../../shared/shared.module';
 
@@ -129,6 +147,7 @@
       imports: [
         CommonModule,
         SharedModule,
+        ReactiveFormsModule,
         FormsRoutingModule
       ],
       declarations: [HomeComponent, TemplateDrivenComponent, ModelDrivenComponent]
