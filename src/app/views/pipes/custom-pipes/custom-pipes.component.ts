@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./custom-pipes.component.scss']
 })
 export class CustomPipesComponent implements OnInit {
+  ascending: boolean = true;
   title:string = "Sapient Razorfish";
   names = [{"id": 1,"first_name": "Jason","last_name": "Martin"}, 
      {"id": 2,"first_name": "Douglas","last_name": "Holmes"}, 
