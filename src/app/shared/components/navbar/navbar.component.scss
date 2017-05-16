@@ -6,8 +6,7 @@ $border-width: 1px;
 .sidebar {
     border-right: $border-width solid $border-color;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    position: fixed;
     h3 {
         margin-top: 0;
         padding-top: 20px;

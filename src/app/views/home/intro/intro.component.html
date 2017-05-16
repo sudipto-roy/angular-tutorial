@@ -1,1 +1,55 @@
 <h1 class="text-center">Angular 2 - Tutorials</h1>
+<hr/>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="text-center">Environment Setup</h2>
+    </div>
+    <div class="panel-body">
+        <h3 class="text-info">Required installations:</h3>
+        <ul>
+            <li>Install Node</li>
+            <li> <code>install angular-cli -g</code> </li>
+            <li> <code>npm install typings -g</code> </li>
+            <li> <code>npm install webpack -g</code> </li>
+            <li> <code>npm install webpack-dev-server -g</code> </li>
+        </ul>
+        <hr/>
+        <h3 class="text-info">Steps to start a new Angular Project:</h3>
+        <ul>
+            <li> <code>new name-of-project</code> </li>
+            <li> <code>cd name-of-project</code> </li>
+            <li> <code>npm install</code> </li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="text-center">Angular Folder Structure</h2>
+    </div>
+    <div class="panel-body">
+        <pre>
+src
+|- app
+    |- <span class="text-primary">common</span> <span class="text-muted">(optional and similar to core)</span>
+    |- <span class="text-primary">core</span>
+    |  |- services
+    |  |- constants
+    |  |- core.module.ts (includes services and contants and exports them)
+    |- <span class="text-primary">root</span>
+    |  |- app-routing.module.ts
+    |  |- app.component.html
+    |  |- app.component.scss
+    |  |- app.component.ts
+    |  |- app.module.ts
+    |- <span class="text-primary">shared</span>
+    |  |- pipes
+    |  |- directives
+    |  |- components (that are shared throughout, like header/footer)
+    |  |- shared.module.ts (includes pipes, directives and components and exports them)
+    |- <span class="text-primary">views</span>
+        |- module1
+        |- component1
+        </pre>
+    </div>
+</div>
